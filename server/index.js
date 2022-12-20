@@ -11,6 +11,7 @@ import morgan from "morgan";//login
 //jsonwebtoken for login
 import path from "path";
 import { fileURLToPath } from "url";
+import {register} from "./controllers/auth.js"
 
 //=================================================================================
 
@@ -50,3 +51,25 @@ import { fileURLToPath } from "url";
     }
  })
  const upload = multer({storage});
+
+
+//AUTHORIZATIONN
+//ROUTES WITH FILES
+app.post("/auth/register",upload.single("picture"),register); //this will act as a middlewhere here (upload.single()) is a middlewhere , register is known as controller
+
+
+
+
+
+
+
+ //MONGOOSE SETUP
+ const PORT = process.env.PORT || 6001
+ mongoose.connect(process.env.MONGO_URL,{
+    useNewUrlParser: true,
+    useUnifiedTopology:true,
+ }).then(()=>{
+    app.listen(PORT,()=> console.log(`SERVER PORT: ${PORT}`));
+ }).catch((error)=>console.log(`${error} did not connect!`))
+
+ //we will make a mongodb and create a structure

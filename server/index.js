@@ -12,6 +12,7 @@ import morgan from "morgan";//login
 import path from "path";
 import { fileURLToPath } from "url";
 import {register} from "./controllers/auth.js"
+import authRoutes from "./routes/auth.js";
 
 //=================================================================================
 
@@ -57,12 +58,8 @@ import {register} from "./controllers/auth.js"
 //ROUTES WITH FILES
 app.post("/auth/register",upload.single("picture"),register); //this will act as a middlewhere here (upload.single()) is a middlewhere , register is known as controller
 
-
-
-
-
-
-
+//ROUTES
+app.use("./auth",authRoutes);
  //MONGOOSE SETUP
  const PORT = process.env.PORT || 6001
  mongoose.connect(process.env.MONGO_URL,{

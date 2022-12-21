@@ -13,6 +13,8 @@ import path from "path";
 import { fileURLToPath } from "url";
 import {register} from "./controllers/auth.js"
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js";
+
 
 //=================================================================================
 
@@ -60,6 +62,7 @@ app.post("/auth/register",upload.single("picture"),register); //this will act as
 
 //ROUTES
 app.use("./auth",authRoutes);
+app.use("./auth",userRoutes);
  //MONGOOSE SETUP
  const PORT = process.env.PORT || 6001
  mongoose.connect(process.env.MONGO_URL,{
@@ -70,3 +73,9 @@ app.use("./auth",authRoutes);
  }).catch((error)=>console.log(`${error} did not connect!`))
 
  //we will make a mongodb and create a structure
+
+
+
+ //USER ROUTES
+ //we need these routes as we need to grab the users information and then we can grab them via their ID
+ //then another route to add or remove friend

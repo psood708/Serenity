@@ -14,6 +14,9 @@ import { fileURLToPath } from "url";
 import {register} from "./controllers/auth.js"
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
+import postRoutes from "./routes/posts.js";
+import { verifyToken } from "./middleware/auth.js";
+import {createPost} from "./controllers/posts.js";
 
 
 //=================================================================================
@@ -57,12 +60,14 @@ import userRoutes from "./routes/users.js";
 
 
 //AUTHORIZATIONN
+
 //ROUTES WITH FILES
 app.post("/auth/register",upload.single("picture"),register); //this will act as a middlewhere here (upload.single()) is a middlewhere , register is known as controller
-
+app.post("/posts",verifyToken,upload.single("picture"),createPost);
 //ROUTES
 app.use("./auth",authRoutes);
-app.use("./auth",userRoutes);
+app.use("./users",userRoutes);
+app.use("./posts",postRoutes);
  //MONGOOSE SETUP
  const PORT = process.env.PORT || 6001
  mongoose.connect(process.env.MONGO_URL,{

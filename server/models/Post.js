@@ -24,7 +24,7 @@ const postSchema = mongoose.Schema(
             of:Boolean,
         },
         comment:{
-            types:Array,
+            type:Array,
             default:[]
         }
     },

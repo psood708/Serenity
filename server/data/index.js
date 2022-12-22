@@ -11,7 +11,7 @@ const userIds = [
   new mongoose.Types.ObjectId(),
 ];
 
-export const users = [
+export const user = [
   {
     _id: userIds[0],
     firstName: "test",

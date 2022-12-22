@@ -1,4 +1,4 @@
-import User from "../models/User";
+import User from "../models/User.js";
 //THESE ARE THE USER ROUTES
 //READ functions so we fetch friends
 export const getUser = async (req,res)=>{

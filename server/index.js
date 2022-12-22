@@ -17,6 +17,9 @@ import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import { verifyToken } from "./middleware/auth.js";
 import {createPost} from "./controllers/posts.js";
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import {user,posts} from "./data/index.js";
 
 
 //=================================================================================
@@ -75,6 +78,11 @@ app.use("./posts",postRoutes);
     useUnifiedTopology:true,
  }).then(()=>{
     app.listen(PORT,()=> console.log(`SERVER PORT: ${PORT}`));
+    
+//   //ADD DATA ONE TIME here we can put the data in the databasee
+//   User.insertMany(user);
+//   Post.insertMany(posts);
+
  }).catch((error)=>console.log(`${error} did not connect!`))
 
  //we will make a mongodb and create a structure

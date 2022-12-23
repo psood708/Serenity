@@ -4,4 +4,3 @@
     },
     "include": ["src"]
 }
-//we do this to keep the imports clean
